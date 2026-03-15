@@ -2,9 +2,15 @@
 
 {% block content %}
 <h1>Registrierung erforderlich</h1>
+<p>Für den Zugriff auf diese Seite ist zunächst eine Registrierung erforderlich.
+Bitte gebe deine E-Mail-Adresse unten in das Eingabefeld ein. Du erhältst in meistens
+nach wenigen Minuten eine E-Mail mit einem Link zur Bestätigung. Du musst den
+Bestätigungslink im gleichem Browser öffnen, in dem du dieses Formular ausgefüllt
+hast. Daraufhin erhältst du ein Zertifikat zum Herunterladen. Nach dem Importieren
+dieses Zertifikats in deinen Browser, kannst du auf diese Seite zugreifen.</p>
 <form method="POST">
-    <label for="email">E-Mail:</label>
-    <input type="email" id="email">
+    <label for="email">E-Mail-Adresse:</label>
+    <input type="email" id="email" required>
     <input type="submit" value="Anfrage senden">
 </form>
 {% endblock %}

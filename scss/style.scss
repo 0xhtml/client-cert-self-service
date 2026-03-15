@@ -2,16 +2,19 @@
 
 @mixin colors($bg, $fn) {
     --bg: #{$bg};
-    --muted: #{call($fn, $bg, 15)};
+    --muted: #{call($fn, $bg, 5)};
     --dark: #{call($fn, $bg, 30)};
     --half: #{call($fn, $bg, 53)};
     --fg: #{call($fn, $bg, 80)};
 }
 
+$hbg: #4c60ff;
+$hbd: lighten($hbg, 10);
+$hfg: #fff;
+
 :root {
     @include colors(#fbfbfb, get-function(darken));
-    --hbg: #4c60ff;
-    --hfg: #fff;
+    --ss: .5rem;
 }
 
 html {
@@ -26,8 +29,43 @@ body {
     width: 100%;
 }
 
+p {
+    text-align: justify;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+
+    & > label {
+        margin: 0 .3rem .75rem;
+    }
+
+    & > input {
+        margin: 0 0 1.5rem;
+        padding: .5rem 1rem;
+        color: inherit;
+        background: var(--muted);
+        border: 1px solid var(--dark);
+        border-radius: 50vh;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 var(--ss) $hbg;
+            border-color: $hbd;
+        }
+
+        &[type="submit"]:focus {
+            background: $hbg;
+            color: $hfg;
+        }
+    }
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
         @include colors(#1a1a1a, get-function(lighten));
+        --ss: .75rem;
     }
 }
